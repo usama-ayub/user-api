@@ -1,6 +1,33 @@
-<form ng-submit="">
+<!--<form name="login.form" ng-submit="login.submit()">
     <h2>Login</h2>
-    Name: <input type="text" name="name"><br>
-    Password: <input type="password" name="password"><br>
+    Name: <input type="email" name="email" ng-model="login.user.email"><br>
+    Password: <input type="password" name="password" ng-model="login.user.password"><br>
     <input type="submit" value="submit">
-</form>
+</form>-->
+<div layout="column">
+    <md-content layout-padding>
+        <form name="login.form" ng-submit="login.submit()" novalidate>
+            <md-input-container class="md-block">
+                <label>Email</label>
+                <input required type="email" name="email" ng-model="login.user.email"/>
+                <div ng-messages="login.form.email.$error" ng-if="login.form.email.$dirty" role="alert">
+                    <div ng-message="required">
+                        Email is required.
+                    </div>
+                    <div ng-message="email">
+                        Email is invalid.
+                    </div>
+                </div>
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label>Password</label>
+                <input required name="password" ng-model="login.user.password">
+                <div ng-messages="login.form.password.$error">
+                    <div ng-message="required">password is required.</div>
+                </div>
+            </md-input-container>
+            <md-button class="md-raised md-primary" type="submit" value="submit">Primary</md-button>
+            <!--<md-button class="md-raised">Button</md-button>-->
+        </form>
+    </md-content>
+</div>

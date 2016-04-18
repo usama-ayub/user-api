@@ -1,6 +1,47 @@
-<form ng-submit="">
-    <h2>Register</h2>
-    Name: <input type="text" name="name"><br>
-    Password: <input type="password" name="password"><br>
-    <input type="submit" value="submit">
-</form>
+
+<div layout="column">
+    <md-content layout-padding>
+        <form name="register.form" ng-submit="register.submit()">
+            <md-input-container class="md-block">
+                <label>Name</label>
+                <input required name="name" ng-model="register.user.name">
+                <div ng-messages="login.form.name.$error">
+                    <div ng-message="required">Name is required.</div>
+                </div>
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label>Email</label>
+                <input required type="email" name="email" ng-model="register.user.email"
+                       ng-pattern="/^.+@.+\..+$/" />
+                <div ng-messages="login.form.email.$error" role="alert">
+                    <div ng-message-exp="['required','pattern']">
+                        Email is required.
+                    </div>
+                </div>
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label>Password</label>
+                <input required name="password" ng-model="register.user.password">
+                <div ng-messages="login.form.password.$error">
+                    <div ng-message="required">password is required.</div>
+                </div>
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label>Gender</label>
+                <input required name="gender" ng-model="register.user.gender">
+                <div ng-messages="login.form.gender.$error">
+                    <div ng-message="required">gender is required.</div>
+                </div>
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label>Location</label>
+                <input required name="location" ng-model="register.user.location">
+                <div ng-messages="login.form.location.$error">
+                    <div ng-message="required">Location is required.</div>
+                </div>
+            </md-input-container>
+            <md-button class="md-raised md-primary" type="submit" value="submit">Primary</md-button>
+            <!--<md-button class="md-raised">Button</md-button>-->
+        </form>
+    </md-content>
+</div>

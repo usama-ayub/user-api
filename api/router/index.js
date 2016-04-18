@@ -10,16 +10,19 @@ var express = require('express'),
 router.post('/register', api.register);
 //login user and return userId and msg
 router.post('/login', api.login);
+//login token verify
+router.post('/login', api.tokenVerify);
 //get all users
 router.get('/users', api.getUsers);
 //user middleware
+
 router.param('userId', api.param);
 //get unique user
 router.get('/users/:userId',api.getUsersbyID);
 // update user
-router.put('/users/:userId', api.updateUser);
+router.put('/users/:userId',api.authorize, api.updateUser);
 //delete user
-router.delete('/users/:userId', api.delUser);
+router.delete('/users/:userId',api.authorize, api.delUser);
 //password reset
 /*router.post('users/:userId', api.passwordReset);*/
 
